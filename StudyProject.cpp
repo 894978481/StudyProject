@@ -5,8 +5,9 @@
 #include <vector>
 #include <stack>
 using namespace std;
-const int pi = 3.14;
 
+
+//用两个栈实现队列
 class Solution
 {
 public:
@@ -32,6 +33,7 @@ public:
         }
     }
     int pop() {
+        if (stack2.empty()) return -1;
         int res = stack2.top();
         stack2.pop();
         return res;
@@ -41,21 +43,34 @@ private:
     stack<int> stack1;
     stack<int> stack2;
 };
+
+//剑指offer调用类
+class sword
+{
+private:
+    Solution myque;
+
+public:
+    void stack2queue()
+    {
+        myque.push(1);
+        myque.push(2);
+        myque.push(3);
+        myque.push(4);
+        int n = myque.pop();
+        for (int i = 0; i < 4; i++)
+        {
+            cout << n << "  ";
+            n = myque.pop();
+        }
+    }
+};
+
+
 int main()
 {
-
-    Solution s;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    int n = s.pop();
-    for (int i = 0;i<4;i++)
-    {
-        cout << n<<"  ";
-        n = s.pop();
-    }
-
+    sword answer;
+    answer.stack2queue();
     //system("pause");
     return 0;
 }
