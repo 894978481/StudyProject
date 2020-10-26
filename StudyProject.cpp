@@ -44,11 +44,29 @@ private:
     stack<int> stack2;
 };
 
+class queue
+{
+public:
+    bool Find(int target, vector<vector<int> > arr)
+    {
+        int row = arr.size();
+        int col = arr[0].size();
+        int i = 0, j = col - 1;
+        while (i < row && j >= 0)
+        {
+            if (arr[i][j] > target) j--;
+            else if (arr[i][j] < target) i++;
+            else return true;
+        }
+        return false;
+    }
+};
 //剑指offer调用类
 class sword
 {
 private:
     Solution myque;
+    queue que;
 
 public:
     void stack2queue()
@@ -64,13 +82,21 @@ public:
             n = myque.pop();
         }
     }
+
+    void findNum()
+    {
+        vector<vector<int>> nums = { {1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15} };
+        int tar = 7;
+        bool myresult = que.Find(tar, nums);
+        cout << "二维数组查找结果：" << myresult;
+    }
 };
 
 
 int main()
 {
-    sword answer;
-    answer.stack2queue();
+    sword s;
+    s.findNum();
     //system("pause");
     return 0;
 }
