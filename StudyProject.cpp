@@ -79,6 +79,15 @@ public:
         }
         return retMul;
     }
+
+    int CutRope(int number)
+    {
+        if (2 == number) return 2;
+        if (3 == number) return 3;
+        if (0 == number % 3) return pow(3, number / 3);
+        else if (1 == number % 3) return 4 * pow(3, (number - 4) / 3);
+        else return 2 * pow(3, (number - 2) / 3);
+    }
 };
 
 //剑指offer调用类
@@ -120,7 +129,14 @@ public:
         {
             cout << retmul[i]<<"  ";
         }
-        cout << "构建成功";
+    }
+
+    void CutRope()
+    {
+        int number;
+        cout << "输入绳子长度";
+        cin >> number;
+        cout<<"最大面积："<<que.CutRope(number);
     }
 };
 
@@ -128,7 +144,7 @@ public:
 int main()
 {
     sword s;
-    s.multiply();
+    s.CutRope();
     //system("pause");
     return 0;
 }
