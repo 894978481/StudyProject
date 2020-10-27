@@ -120,7 +120,7 @@ public:
         {
             cout << retmul[i]<<"  ";
         }
-        
+        cout << "构建成功";
     }
 };
 
