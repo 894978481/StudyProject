@@ -60,7 +60,27 @@ public:
         }
         return false;
     }
+
+    vector<int> multiply(const vector<int>& A) {
+        int len = A.size();
+        int n = 1;
+        vector<int> retMul;
+        for (int i = 0; i < len; i++)
+        {
+            n = 1;
+            for (int j = 0; j < len; j++)
+            {
+                if (j != i)
+                {
+                    n *= A[j];
+                }
+            }
+            retMul.push_back(n);
+        }
+        return retMul;
+    }
 };
+
 //剑指offer调用类
 class sword
 {
@@ -90,13 +110,25 @@ public:
         bool myresult = que.Find(tar, nums);
         cout << "二维数组查找结果：" << myresult;
     }
+
+    void multiply()
+    {
+        vector<int> mul = { 1, 2, 3, 4, 5 };
+        vector<int> retmul;
+        retmul = que.multiply(mul);
+        for (int i = 0; i < retmul.size();i++)
+        {
+            cout << retmul[i]<<"  ";
+        }
+        
+    }
 };
 
 
 int main()
 {
     sword s;
-    s.findNum();
+    s.multiply();
     //system("pause");
     return 0;
 }
