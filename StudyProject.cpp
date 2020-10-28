@@ -88,6 +88,21 @@ public:
         else if (1 == number % 3) return 4 * pow(3, (number - 4) / 3);
         else return 2 * pow(3, (number - 2) / 3);
     }
+
+    bool findRepeatNum(int numbers[], int length, int* duplication)
+    {
+        vector<bool> flag(length, false);
+        for (int i = 0; i < length; i++)
+        {
+            if (!flag[numbers[i]]) flag[numbers[i]] = true;
+            else
+            {
+                duplication[0] = numbers[i];
+                return true;
+            }
+        }
+        return false;
+    }
 };
 
 //剑指offer调用类
@@ -138,13 +153,21 @@ public:
         cin >> number;
         cout<<"最大面积："<<que.CutRope(number);
     }
+
+    void RepeatNum()
+    {
+        int nums[] = { 2,3,1,0,2,5,3 };
+        int length = 7;
+        int num[] = { 0 };
+        cout<<que.findRepeatNum(nums, length, num);
+    }
 };
 
 
 int main()
 {
     sword s;
-    s.CutRope();
+    s.RepeatNum();
     //system("pause");
     return 0;
 }
