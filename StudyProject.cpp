@@ -103,6 +103,20 @@ public:
         }
         return false;
     }
+
+    //大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。n <= 39
+    int Fibonacci(int n) {
+        int a0 = 0, a1 = 1, sum = 0;
+        if (0 == n) return a0;
+        if (1 == n) return a1;
+        for (int i = 0; i < n - 1; i++)
+        {
+            sum = a0 + a1;
+            a0 = a1;
+            a1 = sum;
+        }
+        return sum;
+    }
 };
 
 //剑指offer调用类
@@ -149,6 +163,7 @@ public:
     void CutRope()
     {
         int number;
+
         cout << "输入绳子长度";
         cin >> number;
         cout<<"最大面积："<<que.CutRope(number);
@@ -161,13 +176,22 @@ public:
         int num[] = { 0 };
         cout<<que.findRepeatNum(nums, length, num);
     }
+
+    void fibo()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            cout << que.Fibonacci(i) << "   ";
+        }
+    }
+
 };
 
 
 int main()
 {
     sword s;
-    s.RepeatNum();
+    s.fibo();
     //system("pause");
     return 0;
 }
